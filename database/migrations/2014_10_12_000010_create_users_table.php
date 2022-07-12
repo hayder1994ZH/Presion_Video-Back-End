@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken(); 
             $table->unsignedBigInteger('rule_id')->nullable();
+            $table->boolean('is_active')->default(0);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();

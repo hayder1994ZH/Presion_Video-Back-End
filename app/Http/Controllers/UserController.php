@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\User;
-use App\Http\Requests\User\Admin;
 use App\Http\Requests\User\Create;
-use App\Http\Requests\User\Player;
 use App\Http\Requests\User\Update;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\User\Captain;
 use App\Repositories\UserRepository;
 use App\Http\Requests\Index\Pagination;
-use App\Repositories\SubscriptionRepository;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -21,6 +15,7 @@ class UserController extends Controller
     public function __construct(UserRepository $UserRepo)
     {
         $this->UserRepo = $UserRepo;
+        $this->middleware('role:admin', ['only' => ['index', 'update', 'store','show','destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -59,6 +54,32 @@ class UserController extends Controller
     public function show($id)
     {
         return $this->UserRepo->show($id);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Models\User  $User
+     * @return \Illuminate\Http\Response
+     */
+    public function activeUsers($id)
+    {
+        $user = $this->UserRepo->show($id);
+        if($user->is_active){
+            $user->is_active = 0;
+            $user->save();
+            return response()->json([
+                'success' => true,
+                'message' => 'User unactive',
+            ], Response::HTTP_OK);
+        }else{
+            $user->is_active = 1;
+            $user->save();
+            return response()->json([
+                'success' => true,
+                'message' => 'User activated',
+            ], Response::HTTP_OK);
+        }
     }
 
     /**

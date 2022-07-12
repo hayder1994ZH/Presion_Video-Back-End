@@ -14,6 +14,7 @@ class RulesController extends Controller
     public function __construct(RulesRepository $RulesRepo)
     {
         $this->RulesRepo = $RulesRepo;
+        $this->middleware('role:admin', ['only' => ['index', 'update', 'store','show','destroy']]);
     }
     
     /**
