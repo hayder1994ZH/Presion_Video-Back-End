@@ -16,7 +16,7 @@ class VideoController extends Controller
     public function __construct(VideoRepository $VideoRepo)
     {
         $this->VideoRepo = $VideoRepo;
-        // $this->middleware('role:admin', ['only' => ['index', 'update', 'store','show','destroy']]);
+        $this->middleware('role:admin', ['only' => ['index', 'update', 'store','show','destroy']]);
     }
     /**
      * Display a listing of the resource.
