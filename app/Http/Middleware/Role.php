@@ -24,7 +24,7 @@ class Role extends Middleware
                 "message" => "Unauthorised",
             ],401);
         }
-        $user_role = auth('api')->user()->rules->name;
+        $user_role = auth('api')->user()->rule->name;
         foreach ($rules as $role) {
             if($role == $user_role) {
                 return $next($request);
@@ -32,8 +32,7 @@ class Role extends Middleware
         }
         return response()->json([
             "message" => "you don't have permission",
-            "rules" => $rules
-        ],401);
+        ],403);
 
     }
 }

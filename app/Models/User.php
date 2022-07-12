@@ -22,7 +22,7 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at',
         'remember_token',
         'rule_id',
-        'status',
+        'is_active',
         'created_at',
         'updated_at'
     ];
@@ -37,9 +37,8 @@ class User extends Authenticatable implements JWTSubject
         'deleted_at',
     ];
     protected $casts = [
-        'city_id' => 'int',
         'rule_id' => 'int',
-        'status' => 'boolean',
+        'is_active' => 'boolean',
         'email_verified_at' => 'datetime',
     ];
     public function getJWTIdentifier()
@@ -55,7 +54,7 @@ class User extends Authenticatable implements JWTSubject
     ];
     public function getImageUrlAttribute()
     {
-        return $this->image ? request()->get('host') . Utilities::$imageBucket . $this->image : null;
+        return $this->image ? asset($this->image) : null;
     }
 
     //Relations player_id

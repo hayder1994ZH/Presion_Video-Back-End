@@ -29,14 +29,7 @@ class UpdateProfile extends FormRequest
             'phone' => 'string|unique:users,phone,'.$id,
             'password' => 'string',
             'rule_id' => 'integer|exists:rules,id',
-            'city_id' => 'integer|exists:cities,id',
-            'gym_id' => 'string|exists:gyms,uuid',
             'gender' => 'string|max:255',
-            'birthday' => 'nullable|string',
-            'notes' => 'nullable|string',
-            'card_number' => 'nullable|string',
-            'long' => 'nullable|string',
-            'lat' => 'nullable|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg'
         ];
     }
