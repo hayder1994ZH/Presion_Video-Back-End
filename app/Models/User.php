@@ -54,7 +54,7 @@ class User extends Authenticatable implements JWTSubject
     ];
     public function getImageUrlAttribute()
     {
-        return $this->image ? asset($this->image) : null;
+        return $this->image ? asset('storage/'.$this->image) : null;
     }
 
     //Relations player_id
