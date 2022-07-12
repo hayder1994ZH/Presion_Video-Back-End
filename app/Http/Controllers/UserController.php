@@ -15,7 +15,7 @@ class UserController extends Controller
     public function __construct(UserRepository $UserRepo)
     {
         $this->UserRepo = $UserRepo;
-        $this->middleware('role:admin', ['only' => ['index', 'update', 'store','show','destroy']]);
+        $this->middleware('role:admin', ['only' => ['index', 'update', 'store','show', 'activeUsers','destroy']]);
     }
     /**
      * Display a listing of the resource.
