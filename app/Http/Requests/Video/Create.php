@@ -13,7 +13,7 @@ class Create extends FormRequest
      */
     public function authorize()
     {
-        if(auth()->user()->rule->name == 'client'){
+        if(auth()->user()->rule->name == 'admin'){
             return true;
         }
         return false;
