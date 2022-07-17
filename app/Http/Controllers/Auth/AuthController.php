@@ -33,7 +33,7 @@ class AuthController extends Controller
         $data['rule_id'] = 2;
         $this->authRepo->create($data);
         $response = $this->authRepo->authenticate([
-            'phone' => $data['phone'],
+            'email' => $data['email'],
             'password' => $request->password
         ]);
         return response()->json($response[0], $response['code']);

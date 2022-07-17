@@ -15,6 +15,7 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'id',
         'name',
+        'email',
         'phone',
         'password',
         'image',
@@ -34,6 +35,7 @@ class User extends Authenticatable implements JWTSubject
         'image',
         'remember_token',
         'email_verified_at',
+        'include_player_ids',
         'deleted_at',
     ];
     protected $casts = [

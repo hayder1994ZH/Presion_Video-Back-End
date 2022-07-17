@@ -25,11 +25,11 @@ class Create extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
             'phone' => 'required|string|unique:users,phone',
             'password' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'rule_id' => 'required|integer|exists:rules,id',
-            'gender' => 'nullable|string|max:255',
         ];
     }
 }
