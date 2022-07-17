@@ -26,10 +26,10 @@ class UpdateProfile extends FormRequest
         $id = auth()->user()->id;
         return [
             'name' => 'string',
+            'email' => 'string|email|unique:users,email,'.$id,
             'phone' => 'string|unique:users,phone,'.$id,
             'password' => 'string',
             'rule_id' => 'integer|exists:rules,id',
-            'gender' => 'string|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg'
         ];
     }
