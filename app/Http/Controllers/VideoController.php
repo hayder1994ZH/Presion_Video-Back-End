@@ -95,6 +95,7 @@ class VideoController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Video updated successfully',
+            'data' => $this->VideoRepo->show($id)
         ], Response::HTTP_OK);
     }
 
