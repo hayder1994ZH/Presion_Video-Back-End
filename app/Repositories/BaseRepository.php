@@ -50,7 +50,7 @@ Abstract class BaseRepository{
     //Base repo to update item 
     public function update($id, $values){
         $item = $this->model->findOrFail($id);
-        return $item->update($values);
+        $item->update($values);
     }
     //base repo to delete item
     public function delete($model)

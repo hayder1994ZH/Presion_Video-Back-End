@@ -102,6 +102,7 @@ class UserController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'User updated successfully',
+            'data' => $this->UserRepo->show($id),
         ], Response::HTTP_OK);
     }
 

@@ -54,7 +54,7 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Profile created successfully',
-            'data' => $user
+            'data' => auth()->user()
         ], Response::HTTP_OK);
     }
  
