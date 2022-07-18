@@ -10,7 +10,7 @@ class Video extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'id', 'title', 'description', 'image', 'video', 'created_at', 'updated_at'
+        'id', 'title', 'description', 'image', 'video', 'user_id', 'created_at', 'updated_at'
     ];
     protected function serializeDate(DateTimeInterface $date)
     {
