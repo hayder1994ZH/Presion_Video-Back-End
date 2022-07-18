@@ -55,6 +55,7 @@ class VideoController extends Controller
     public function store(Create $request)
     {
         $video = $request->validated();
+        $video['user_id'] = auth()->user()->id;  
         if($request->hasFile('image')){
             $video['image'] = $request->file('image')->store('posters');
         }
